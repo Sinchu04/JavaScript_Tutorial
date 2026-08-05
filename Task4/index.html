@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - String Analyzer</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            background:#fff;
+            width:450px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#0d6efd;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:16px;
+            margin-bottom:15px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        .result{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:10px;
+            line-height:1.8;
+        }
+
+        .result p{
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>String Analyzer</h2>
+
+    <input type="text" id="text" placeholder="Enter a string">
+
+    <button onclick="displayResult()">Analyze String</button>
+
+    <div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function analyzeString(str){
+
+    let countA = (str.match(/a/gi) || []).length;
+
+    return{
+        length : str.length,
+        lowercase : str.toLowerCase(),
+        uppercase : str.toUpperCase(),
+        containsJavaScript : str.toLowerCase().includes("javascript"),
+        countA : countA
+    };
+
+}
+
+function displayResult(){
+
+    let text = document.getElementById("text").value;
+
+    let result = analyzeString(text);
+
+    document.getElementById("result").innerHTML = `
+        <p><strong>Length:</strong> ${result.length}</p>
+        <p><strong>Lowercase:</strong> ${result.lowercase}</p>
+        <p><strong>Uppercase:</strong> ${result.uppercase}</p>
+        <p><strong>Contains "JavaScript":</strong> ${result.containsJavaScript}</p>
+        <p><strong>Occurrences of 'a':</strong> ${result.countA}</p>
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
