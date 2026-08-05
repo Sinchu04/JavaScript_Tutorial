@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6 - String Array Operations</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            width:650px;
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#0d6efd;
+            margin-bottom:20px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#0d6efd;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        #result{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:20px;
+            border-radius:10px;
+            line-height:1.8;
+        }
+
+        .step{
+            margin-bottom:18px;
+        }
+
+        .step strong{
+            color:#0d6efd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>String Array Operations</h2>
+
+    <button onclick="performOperations()">Perform Operations</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function performOperations(){
+
+    // Step 1
+    let names = ["John", "Jane", "Doe", "Alice", "Bob"];
+    let originalNames = [...names];
+
+    // Step 2
+    console.log("Original Names:");
+    names.forEach(name => console.log(name));
+
+    // Step 3
+    names.push("Eve");
+    let afterAdding = [...names];
+    console.log("After Adding Eve:", afterAdding);
+
+    // Step 4
+    names = names.filter(name => name !== "Doe");
+    let afterRemoving = [...names];
+    console.log("After Removing Doe:", afterRemoving);
+
+    // Step 5
+    names.sort();
+    let sortedNames = [...names];
+    console.log("Sorted Names:", sortedNames);
+
+    // Step 6
+    let aliceStatus = names.includes("Alice")
+        ? "Alice is present"
+        : "Alice is not present";
+
+    console.log(aliceStatus);
+
+    // Step 7
+    let uppercaseNames = names.map(name => name.toUpperCase());
+    console.log("Uppercase Names:", uppercaseNames);
+
+    // Display Results
+    document.getElementById("result").innerHTML = `
+        <div class="step">
+            <strong>Step 1 - Original Names:</strong><br>
+            ${originalNames.join(", ")}
+        </div>
+
+        <div class="step">
+            <strong>Step 2 - Names Printed to Console:</strong><br>
+            Open the browser console (F12 → Console) to view each name on a new line.
+        </div>
+
+        <div class="step">
+            <strong>Step 3 - After Adding "Eve":</strong><br>
+            ${afterAdding.join(", ")}
+        </div>
+
+        <div class="step">
+            <strong>Step 4 - After Removing "Doe":</strong><br>
+            ${afterRemoving.join(", ")}
+        </div>
+
+        <div class="step">
+            <strong>Step 5 - Sorted Array:</strong><br>
+            ${sortedNames.join(", ")}
+        </div>
+
+        <div class="step">
+            <strong>Step 6 - Check if "Alice" Exists:</strong><br>
+            ${aliceStatus}
+        </div>
+
+        <div class="step">
+            <strong>Step 7 - Uppercase Names:</strong><br>
+            ${uppercaseNames.join(", ")}
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
