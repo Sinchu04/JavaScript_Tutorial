@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 11 - Callback Function Calculator</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:650px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+h2{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:20px;
+}
+
+input,select{
+
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+
+}
+
+button{
+
+    width:100%;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#084ec1;
+
+}
+
+.result{
+
+    margin-top:20px;
+    background:#f8f9fa;
+    padding:20px;
+    border-radius:10px;
+    line-height:1.8;
+
+}
+
+.step{
+
+    margin-bottom:15px;
+
+}
+
+strong{
+
+    color:#0d6efd;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Callback Function Calculator</h2>
+
+<input
+type="number"
+id="num1"
+placeholder="Enter First Number">
+
+<input
+type="number"
+id="num2"
+placeholder="Enter Second Number">
+
+<select id="operation">
+
+<option value="add">Addition</option>
+
+<option value="subtract">Subtraction</option>
+
+<option value="multiply">Multiplication</option>
+
+<option value="divide">Division</option>
+
+</select>
+
+<button onclick="runCalculator()">
+Calculate
+</button>
+
+<div
+class="result"
+id="result">
+</div>
+
+</div>
+
+<script>
+
+function calculate(num1,num2,operation,callback){
+
+    let result;
+
+    switch(operation){
+
+        case "add":
+            result=num1+num2;
+            break;
+
+        case "subtract":
+            result=num1-num2;
+            break;
+
+        case "multiply":
+            result=num1*num2;
+            break;
+
+        case "divide":
+            result=num2!==0 ? num1/num2 : "Cannot divide by zero";
+            break;
+
+        default:
+            result="Invalid Operation";
+
+    }
+
+    callback(result);
+
+}
+
+function displayResult(result){
+
+    console.log("Calculation Result:",result);
+
+    document.getElementById("result").innerHTML+=`
+
+<div class="step">
+
+<strong>Result:</strong><br>
+
+${result}
+
+</div>
+
+`;
+
+}
+
+function runCalculator(){
+
+    document.getElementById("result").innerHTML="";
+
+    let num1=Number(document.getElementById("num1").value);
+
+    let num2=Number(document.getElementById("num2").value);
+
+    let operation=document.getElementById("operation").value;
+
+    calculate(num1,num2,operation,displayResult);
+
+    // Test Cases
+
+    document.getElementById("result").innerHTML+="<hr><br><strong>Sample Test Cases</strong><br><br>";
+
+    calculate(10,5,"add",displayResult);
+
+    calculate(10,5,"subtract",displayResult);
+
+    calculate(10,5,"multiply",displayResult);
+
+    calculate(10,5,"divide",displayResult);
+
+    calculate(10,5,"power",displayResult);
+
+}
+
+</script>
+
+</body>
+</html>
