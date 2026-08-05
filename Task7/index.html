@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7 - Objects, Sets & Maps</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            padding:30px;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#0d6efd;
+            margin-bottom:30px;
+        }
+
+        .card{
+            background:#fff;
+            padding:20px;
+            border-radius:12px;
+            margin-bottom:25px;
+            box-shadow:0 8px 20px rgba(0,0,0,.15);
+        }
+
+        h2{
+            color:#0d6efd;
+            margin-bottom:15px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            background:#0d6efd;
+            color:white;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        .output{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:8px;
+            line-height:1.8;
+        }
+
+        .section{
+            margin-bottom:18px;
+        }
+
+        strong{
+            color:#0d6efd;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>JavaScript Objects, Sets & Maps</h1>
+
+<button onclick="runTask()">Run Task</button>
+
+<div class="card">
+    <h2>👤 Objects</h2>
+    <div id="objectOutput" class="output"></div>
+</div>
+
+<div class="card">
+    <h2>🔢 Sets</h2>
+    <div id="setOutput" class="output"></div>
+</div>
+
+<div class="card">
+    <h2>🗺️ Maps</h2>
+    <div id="mapOutput" class="output"></div>
+</div>
+
+</div>
+
+<script>
+
+function runTask(){
+
+// =======================
+// OBJECTS
+// =======================
+
+const person1 = {
+    name:"John",
+    age:25,
+    gender:"Male",
+    occupation:"Software Developer"
+};
+
+const person2 = {
+    name:"Alice",
+    age:22,
+    gender:"Female",
+    occupation:"UI Designer"
+};
+
+console.log("Person 1",person1);
+console.log("Person 2",person2);
+
+document.getElementById("objectOutput").innerHTML=`
+
+<div class="section">
+<strong>Person 1</strong><br>
+Name : ${person1.name}<br>
+Age : ${person1.age}<br>
+Gender : ${person1.gender}<br>
+Occupation : ${person1.occupation}
+</div>
+
+<div class="section">
+<strong>Person 2</strong><br>
+Name : ${person2.name}<br>
+Age : ${person2.age}<br>
+Gender : ${person2.gender}<br>
+Occupation : ${person2.occupation}
+</div>
+
+`;
+
+
+// =======================
+// SETS
+// =======================
+
+let numbers=[10,5,8,3,12,6,2,5,8,10];
+
+let uniqueSet=new Set(numbers);
+
+let secondSet=new Set([5,8,20]);
+
+let union=new Set([...uniqueSet,...secondSet]);
+
+let intersection=new Set(
+    [...uniqueSet].filter(x=>secondSet.has(x))
+);
+
+let difference=new Set(
+    [...uniqueSet].filter(x=>!secondSet.has(x))
+);
+
+let subset=[5,8].every(x=>uniqueSet.has(x));
+
+console.log("Original Array:",numbers);
+console.log("Unique Numbers:",[...uniqueSet]);
+console.log("Union:",[...union]);
+console.log("Intersection:",[...intersection]);
+console.log("Difference:",[...difference]);
+console.log("Subset:",subset);
+
+document.getElementById("setOutput").innerHTML=`
+
+<div class="section">
+<strong>Original Array</strong><br>
+${numbers.join(", ")}
+</div>
+
+<div class="section">
+<strong>Unique Numbers</strong><br>
+${[...uniqueSet].join(", ")}
+</div>
+
+<div class="section">
+<strong>Second Set</strong><br>
+${[...secondSet].join(", ")}
+</div>
+
+<div class="section">
+<strong>Union</strong><br>
+${[...union].join(", ")}
+</div>
+
+<div class="section">
+<strong>Intersection</strong><br>
+${[...intersection].join(", ")}
+</div>
+
+<div class="section">
+<strong>Difference</strong><br>
+${[...difference].join(", ")}
+</div>
+
+<div class="section">
+<strong>Subset Check</strong><br>
+${subset}
+</div>
+
+`;
+
+
+// =======================
+// MAPS
+// =======================
+
+let student=new Map();
+
+student.set("Name","John");
+student.set("Age",25);
+student.set("City","Bangalore");
+
+let originalMap=Array.from(student.entries());
+
+let name=student.get("Name");
+
+student.set("Age",26);
+
+let updatedMap=Array.from(student.entries());
+
+student.delete("City");
+
+let finalMap=Array.from(student.entries());
+
+console.log("Original Map:",originalMap);
+console.log("Access Name:",name);
+console.log("Updated Map:",updatedMap);
+console.log("After Delete:",finalMap);
+
+document.getElementById("mapOutput").innerHTML=`
+
+<div class="section">
+<strong>Original Map</strong><br>
+${originalMap.map(item=>item[0]+" : "+item[1]).join("<br>")}
+</div>
+
+<div class="section">
+<strong>Access Value (Name)</strong><br>
+${name}
+</div>
+
+<div class="section">
+<strong>Updated Map</strong><br>
+${updatedMap.map(item=>item[0]+" : "+item[1]).join("<br>")}
+</div>
+
+<div class="section">
+<strong>After Deleting City</strong><br>
+${finalMap.map(item=>item[0]+" : "+item[1]).join("<br>")}
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
