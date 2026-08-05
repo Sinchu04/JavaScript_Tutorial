@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 - Age Calculator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            background:#fff;
+            width:420px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+            text-align:center;
+        }
+
+        h2{
+            color:#0d6efd;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:none;
+            border-radius:8px;
+            background:#0d6efd;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#333;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Age Calculator</h2>
+
+    <input type="text" id="birthYear" placeholder="Enter Birth Year">
+
+    <input type="text" id="currentYear" placeholder="Enter Current Year">
+
+    <button onclick="displayAge()">Calculate Age</button>
+
+    <p id="result"></p>
+
+</div>
+
+<script>
+
+function calculateAge(birthYear, currentYear){
+
+    birthYear = Number(birthYear);
+    currentYear = Number(currentYear);
+
+    if(isNaN(birthYear) || isNaN(currentYear)){
+        return "Please enter valid numeric values.";
+    }
+
+    if(currentYear < birthYear){
+        return "Current year cannot be less than birth year.";
+    }
+
+    let age = currentYear - birthYear;
+
+    return "You are " + age + " years old.";
+}
+
+function displayAge(){
+
+    let birthYear = document.getElementById("birthYear").value;
+    let currentYear = document.getElementById("currentYear").value;
+
+    document.getElementById("result").innerHTML =
+    calculateAge(birthYear, currentYear);
+
+}
+
+</script>
+
+</body>
+</html>
