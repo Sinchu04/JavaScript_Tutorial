@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5 - Array Operations</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            width:600px;
+            background:#fff;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#0d6efd;
+            margin-bottom:20px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#0d6efd;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        #result{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:10px;
+            line-height:1.8;
+            white-space:pre-line;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Array Operations</h2>
+
+    <button onclick="performOperations()">
+        Perform Operations
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function performOperations(){
+
+    let numbers = [10,5,8,3,12,6];
+
+    console.log("Original Array:", numbers);
+
+    console.log("Length:", numbers.length);
+
+    numbers.push(7);
+    console.log("After Adding 7:", numbers);
+
+    numbers.shift();
+    console.log("After Removing First Element:", numbers);
+
+    numbers.sort((a,b)=>a-b);
+    console.log("Sorted Array:", numbers);
+
+    numbers.reverse();
+    console.log("Reversed Array:", numbers);
+
+    if(numbers.includes(8)){
+        console.log("Number 8 exists");
+    }
+    else{
+        console.log("Number 8 doesn't exist");
+    }
+
+    console.log("Index of 12:", numbers.indexOf(12));
+
+    let doubledNumbers = numbers.map(num => num * 2);
+
+    console.log("Doubled Numbers:", doubledNumbers);
+
+    document.getElementById("result").innerHTML = `
+<b>Final Array:</b> ${numbers}<br><br>
+
+<b>Length:</b> ${numbers.length}<br>
+
+<b>Contains 8:</b> ${numbers.includes(8)}<br>
+
+<b>Index of 12:</b> ${numbers.indexOf(12)}<br><br>
+
+<b>Doubled Numbers:</b><br>
+${doubledNumbers}
+`;
+
+}
+
+</script>
+
+</body>
+</html>
