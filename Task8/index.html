@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8 - Dates & Regular Expressions</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f7fc;
+            padding:30px;
+        }
+
+        .container{
+            max-width:900px;
+            margin:auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#0d6efd;
+            margin-bottom:25px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            background:#0d6efd;
+            color:white;
+            font-size:16px;
+            border-radius:8px;
+            cursor:pointer;
+            margin-bottom:25px;
+            transition:.3s;
+        }
+
+        button:hover{
+            background:#084ec1;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:12px;
+            margin-bottom:25px;
+            box-shadow:0 8px 20px rgba(0,0,0,.15);
+        }
+
+        h2{
+            color:#0d6efd;
+            margin-bottom:15px;
+        }
+
+        .step{
+            margin-bottom:15px;
+            line-height:1.8;
+        }
+
+        strong{
+            color:#0d6efd;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>JavaScript Dates & Regular Expressions</h1>
+
+<button onclick="runDemo()">Run Demo</button>
+
+<div class="card">
+    <h2>📅 Date Operations</h2>
+    <div id="dateOutput"></div>
+</div>
+
+<div class="card">
+    <h2>🔍 Regular Expressions</h2>
+    <div id="regexOutput"></div>
+</div>
+
+</div>
+
+<script>
+
+function runDemo(){
+
+
+
+let today = new Date();
+
+let currentDate = today.toLocaleDateString();
+
+let currentTime = today.toLocaleTimeString();
+
+let year = today.getFullYear();
+
+let month = today.toLocaleString("default",{month:"long"});
+
+let day = today.toLocaleString("default",{weekday:"long"});
+
+let formattedDate = today.toDateString();
+
+let futureDate = new Date(today);
+futureDate.setDate(futureDate.getDate()+7);
+
+let pastDate = new Date(today);
+pastDate.setDate(pastDate.getDate()-7);
+
+console.log("Current Date:",currentDate);
+console.log("Current Time:",currentTime);
+console.log("Current Year:",year);
+console.log("Current Month:",month);
+console.log("Current Day:",day);
+console.log("Formatted Date:",formattedDate);
+console.log("Future Date:",futureDate.toDateString());
+console.log("Past Date:",pastDate.toDateString());
+
+document.getElementById("dateOutput").innerHTML=`
+
+<div class="step">
+<strong>Current Date:</strong><br>
+${currentDate}
+</div>
+
+<div class="step">
+<strong>Current Time:</strong><br>
+${currentTime}
+</div>
+
+<div class="step">
+<strong>Current Year:</strong><br>
+${year}
+</div>
+
+<div class="step">
+<strong>Current Month:</strong><br>
+${month}
+</div>
+
+<div class="step">
+<strong>Current Day:</strong><br>
+${day}
+</div>
+
+<div class="step">
+<strong>Formatted Date:</strong><br>
+${formattedDate}
+</div>
+
+<div class="step">
+<strong>Future Date (+7 Days):</strong><br>
+${futureDate.toDateString()}
+</div>
+
+<div class="step">
+<strong>Past Date (-7 Days):</strong><br>
+${pastDate.toDateString()}
+</div>
+
+`;
+
+
+
+
+let email="john@gmail.com";
+let phone="9876543210";
+let alphabet="HelloWorld";
+let number="123456";
+let sentence="I love Java";
+let mixed="Order123Number456";
+
+let emailValid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let phoneValid=/^\d{10}$/;
+let alphabetValid=/^[A-Za-z]+$/;
+let numberValid=/^\d+$/;
+
+let replacedText=sentence.replace("Java","JavaScript");
+
+let digits=mixed.match(/\d+/g);
+
+console.log("Email Valid:",emailValid.test(email));
+console.log("Phone Valid:",phoneValid.test(phone));
+console.log("Alphabet Only:",alphabetValid.test(alphabet));
+console.log("Numbers Only:",numberValid.test(number));
+console.log("Replaced Text:",replacedText);
+console.log("Extracted Digits:",digits);
+
+document.getElementById("regexOutput").innerHTML=`
+
+<div class="step">
+<strong>Email Validation</strong><br>
+Input : ${email}<br>
+Result : ${emailValid.test(email)}
+</div>
+
+<div class="step">
+<strong>Phone Validation</strong><br>
+Input : ${phone}<br>
+Result : ${phoneValid.test(phone)}
+</div>
+
+<div class="step">
+<strong>Alphabet Validation</strong><br>
+Input : ${alphabet}<br>
+Result : ${alphabetValid.test(alphabet)}
+</div>
+
+<div class="step">
+<strong>Number Validation</strong><br>
+Input : ${number}<br>
+Result : ${numberValid.test(number)}
+</div>
+
+<div class="step">
+<strong>Replace Text</strong><br>
+Original : ${sentence}<br>
+Updated : ${replacedText}
+</div>
+
+<div class="step">
+<strong>Extract Digits</strong><br>
+Input : ${mixed}<br>
+Output : ${digits.join(", ")}
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
