@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 1 - Change Paragraph Text</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    width:400px;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+h2{
+    color:#333;
+    margin-bottom:20px;
+}
+
+p{
+    margin:20px 0;
+    color:#555;
+    font-size:18px;
+}
+
+button{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#084ec1;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>JavaScript Task 1</h2>
+
+<p id="message">Click the button to change this text.</p>
+
+<button onclick="changeText()">Click Me</button>
+
+</div>
+
+<script>
+function changeText(){
+    document.getElementById("message").innerHTML =
+    "Congratulations! The paragraph text has been changed.";
+}
+</script>
+
+</body>
+</html>
