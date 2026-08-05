@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 9 - Conditional & Loop Statements</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:30px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:25px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    margin-bottom:25px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#084ec1;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+h2{
+    color:#0d6efd;
+    margin-bottom:15px;
+}
+
+.step{
+    margin-bottom:18px;
+    line-height:1.8;
+}
+
+strong{
+    color:#0d6efd;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>JavaScript Conditional & Loop Statements</h1>
+
+<button onclick="runDemo()">Run Demo</button>
+
+<div class="card">
+<h2>🔹 Conditional Statements</h2>
+<div id="conditionOutput"></div>
+</div>
+
+<div class="card">
+<h2>🔁 Loop Statements</h2>
+<div id="loopOutput"></div>
+</div>
+
+</div>
+
+<script>
+
+function runDemo(){
+
+
+
+let age = 20;
+let ifResult = "";
+
+if(age >= 18){
+    ifResult = "Eligible to Vote";
+}
+
+console.log("If Statement:", ifResult);
+
+
+let number = 15;
+let ifElseResult = "";
+
+if(number % 2 == 0){
+    ifElseResult = "Even Number";
+}
+else{
+    ifElseResult = "Odd Number";
+}
+
+console.log("If Else:", ifElseResult);
+
+
+let marks = 85;
+let grade = "";
+
+if(marks >= 90){
+    grade = "Grade A+";
+}
+else if(marks >= 75){
+    grade = "Grade A";
+}
+else if(marks >= 50){
+    grade = "Grade B";
+}
+else{
+    grade = "Fail";
+}
+
+console.log("Grade:", grade);
+
+// switch
+let day = 3;
+let dayName = "";
+
+switch(day){
+
+    case 1:
+        dayName="Monday";
+        break;
+
+    case 2:
+        dayName="Tuesday";
+        break;
+
+    case 3:
+        dayName="Wednesday";
+        break;
+
+    case 4:
+        dayName="Thursday";
+        break;
+
+    case 5:
+        dayName="Friday";
+        break;
+
+    case 6:
+        dayName="Saturday";
+        break;
+
+    case 7:
+        dayName="Sunday";
+        break;
+
+    default:
+        dayName="Invalid Day";
+
+}
+
+console.log("Switch:",dayName);
+
+// ternary
+let ternary = age>=18 ? "Adult" : "Minor";
+
+console.log("Ternary:",ternary);
+
+document.getElementById("conditionOutput").innerHTML=`
+
+<div class="step">
+<strong>if Statement</strong><br>
+Age : ${age}<br>
+Result : ${ifResult}
+</div>
+
+<div class="step">
+<strong>if else Statement</strong><br>
+Number : ${number}<br>
+Result : ${ifElseResult}
+</div>
+
+<div class="step">
+<strong>if else if else Statement</strong><br>
+Marks : ${marks}<br>
+Result : ${grade}
+</div>
+
+<div class="step">
+<strong>switch Statement</strong><br>
+Day : ${day}<br>
+Result : ${dayName}
+</div>
+
+<div class="step">
+<strong>Ternary Operator</strong><br>
+Result : ${ternary}
+</div>
+
+`;
+
+
+
+let forLoop = [];
+
+for(let i=1;i<=5;i++){
+    forLoop.push(i);
+}
+
+console.log("For Loop:",forLoop);
+
+let whileLoop=[];
+
+let i=1;
+
+while(i<=5){
+
+    whileLoop.push(i);
+
+    i++;
+
+}
+
+console.log("While Loop:",whileLoop);
+
+let doWhile=[];
+
+let j=1;
+
+do{
+
+    doWhile.push(j);
+
+    j++;
+
+}while(j<=5);
+
+console.log("Do While:",doWhile);
+
+let fruits=["Apple","Banana","Orange"];
+
+let forOf=[];
+
+for(let fruit of fruits){
+
+    forOf.push(fruit);
+
+}
+
+console.log("For Of:",forOf);
+
+let person={
+
+    Name:"John",
+
+    Age:25,
+
+    City:"Bangalore"
+
+};
+
+let forIn=[];
+
+for(let key in person){
+
+    forIn.push(`${key} : ${person[key]}`);
+
+}
+
+console.log("For In:",forIn);
+
+let breakLoop=[];
+
+for(let k=1;k<=5;k++){
+
+    if(k==4){
+
+        break;
+
+    }
+
+    breakLoop.push(k);
+
+}
+
+console.log("Break:",breakLoop);
+
+let continueLoop=[];
+
+for(let m=1;m<=5;m++){
+
+    if(m==3){
+
+        continue;
+
+    }
+
+    continueLoop.push(m);
+
+}
+
+console.log("Continue:",continueLoop);
+
+document.getElementById("loopOutput").innerHTML=`
+
+<div class="step">
+<strong>for Loop</strong><br>
+${forLoop.join(", ")}
+</div>
+
+<div class="step">
+<strong>while Loop</strong><br>
+${whileLoop.join(", ")}
+</div>
+
+<div class="step">
+<strong>dowhile Loop</strong><br>
+${doWhile.join(", ")}
+</div>
+
+<div class="step">
+<strong>for of Loop</strong><br>
+${forOf.join(", ")}
+</div>
+
+<div class="step">
+<strong>for in Loop</strong><br>
+${forIn.join("<br>")}
+</div>
+
+<div class="step">
+<strong>break Statement</strong><br>
+${breakLoop.join(", ")}
+</div>
+
+<div class="step">
+<strong>continue Statement</strong><br>
+${continueLoop.join(", ")}
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
